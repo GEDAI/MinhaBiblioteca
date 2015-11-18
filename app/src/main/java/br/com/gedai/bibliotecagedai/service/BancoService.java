@@ -59,14 +59,14 @@ public class BancoService {
             banco.getWritableDatabase().insert("livro", null, contentValues);
 
             Toast toast = Toast.makeText(context,
-                    "Livro cadastrado com sucesso!!", 5);
+                    "Livro cadastrado com sucesso!!", Toast.LENGTH_SHORT);
             toast.show();
 
             banco.close();
 
         } catch (Exception e) {
             Toast toast = Toast.makeText(context,
-                    "Erro ao salvar informações no banco!", 5);
+                    "Erro ao salvar informações no banco!", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
