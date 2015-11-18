@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_conteudo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="426dp" >
+
+        <ImageView
+            android:id="@+id/imagem_livro"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher" />
+
+        <EditText
+            android:id="@+id/txtTitulo"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imagem_livro"
+            android:layout_toRightOf="@+id/btnAdicionar"
+            android:ems="10"
+            android:inputType="text" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/lblTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txtTitulo"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="18dp"
+            android:text="@string/titulo" />
+
+        <EditText
+            android:id="@+id/txtAutor"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtTitulo"
+            android:layout_below="@+id/txtTitulo"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/lblAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txtAutor"
+            android:layout_alignLeft="@+id/lblTitulo"
+            android:text="@string/autor" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lblAutor"
+            android:layout_below="@+id/lblAutor"
+            android:layout_marginTop="46dp"
+            android:text="@string/resumo" />
+
+        <EditText
+            android:id="@+id/txtResumo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView1"
+            android:layout_alignBottom="@+id/textView1"
+            android:layout_toRightOf="@+id/imagem_livro"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <RatingBar
+            android:id="@+id/avaliacaoLivro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtResumo"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/btnAdicionar"
+            android:numStars="5"
+            android:rating="1.0"
+            android:stepSize="1.0" />
+
+        <TextView
+            android:id="@+id/lblAvaliacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView1"
+            android:layout_alignTop="@+id/avaliacaoLivro"
+            android:text="@string/avaliacao" />
+
+        <Button
+            android:id="@+id/btnAdicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/lblAvaliacao"
+            android:layout_marginTop="38dp"
+            android:layout_toLeftOf="@+id/txtResumo"
+            android:text="@string/adicionar"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnInserirImagem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/imagem_livro"
+            android:layout_toRightOf="@+id/imagem_livro"
+            android:text="@string/inserir_imagem" />
+    </RelativeLayout>
+
+</ScrollView>
