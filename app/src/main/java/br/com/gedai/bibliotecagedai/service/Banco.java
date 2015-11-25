@@ -23,7 +23,10 @@ public class Banco extends SQLiteOpenHelper {
                 + " autor varchar(45) NOT NULL,"
                 + " resumo varchar(125) NOT NULL,"
                 + " path_imagem varchar(125) NOT NULL,"
-                + " avaliacao double NOT NULL"+ ");");
+                + " avaliacao double NOT NULL, "
+                + " observacao varchar(150),"
+                + " classificacao varchar(20),"
+                + " cutter varchar(20)" + ");");
     }
 
 

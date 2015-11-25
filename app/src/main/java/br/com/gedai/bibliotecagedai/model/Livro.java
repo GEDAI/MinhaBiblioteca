@@ -9,30 +9,20 @@ public class Livro implements Serializable {
     private static final long serialVersionUID = 1L;
     private String titulo;
     private String autor;
+    private String classificacao;
+    private String cutter;
+    private String observacao;
     private String resumo;
     private double avaliacao;
     private String pathImagem;
 
-    public String getTitulo() {
-        return titulo;
-    }
+    public String getTitulo() {return titulo;}
+    public void setTitulo(String titulo) {this.titulo = titulo;}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+    public String getAutor() {return autor;}
+    public void setAutor(String autor) {this.autor = autor;}
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getResumo() {
-        return resumo;
-    }
-
+    public String getResumo() {return resumo;}
     public void setResumo(String resumo) {
         this.resumo = resumo;
     }
@@ -40,7 +30,6 @@ public class Livro implements Serializable {
     public double getAvaliacao() {
         return avaliacao;
     }
-
     public void setAvaliacao(double avaliacao) {
         this.avaliacao = avaliacao;
     }
@@ -48,10 +37,16 @@ public class Livro implements Serializable {
     public String getPathImagem() {
         return pathImagem;
     }
+    public void setPathImagem(String pathImagem) {this.pathImagem = pathImagem;}
 
-    public void setPathImagem(String pathImagem) {
-        this.pathImagem = pathImagem;
-    }
+    public String getObservacao() { return observacao; }
+    public void setObservacao(String observacao) {this.observacao = observacao;}
+
+    public String getClassificacao() {return observacao; }
+    public void setClassificacao(String Classificacao) {this.classificacao = Classificacao;}
+
+    public String getCutter() {return cutter;}
+    public void setCutter(String Cutter) {this.cutter = Cutter;}
 
 
 }

@@ -11,6 +11,9 @@
     <string name="resumo">Resumo:</string>
     <string name="avaliacao">Avaliação:</string>
     <string name="inserir_imagem">+</string>
+    <string name="classificacao">Classificação:</string>
+    <string name="cutter">Cutter:</string>
+    <string name="observacao">Observação:</string>
 
 
 </resources>

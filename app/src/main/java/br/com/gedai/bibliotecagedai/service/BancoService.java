@@ -53,7 +53,9 @@ public class BancoService {
             ContentValues contentValues = new ContentValues();
             contentValues.put("titulo", livro.getTitulo());
             contentValues.put("autor", livro.getAutor());
-            contentValues.put("resumo", livro.getResumo());
+            contentValues.put("classificacao", livro.getClassificacao());
+            contentValues.put("cutter", livro.getCutter());
+            contentValues.put("observacao", livro.getObservacao());
             contentValues.put("avaliacao", livro.getAvaliacao());
             contentValues.put("path_imagem", livro.getPathImagem());
             banco.getWritableDatabase().insert("livro", null, contentValues);

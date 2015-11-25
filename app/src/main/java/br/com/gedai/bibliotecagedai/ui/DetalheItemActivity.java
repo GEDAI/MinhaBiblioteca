@@ -19,6 +19,9 @@ public class DetalheItemActivity extends Activity{
     private ImageView imagemLivro;
     private TextView txtTitulo;
     private TextView txtAutor;
+    private TextView txtClassificacao;
+    private TextView txtCutter;
+    private TextView txtObservacao;
     private TextView txtResumo;
     private RatingBar avalicoesLivro;
     private Livro livro;
@@ -34,12 +37,18 @@ public class DetalheItemActivity extends Activity{
         imagemLivro = (ImageView) findViewById(br.com.gedai.bibliotecagedai.R.id.imagem_livro);
         txtTitulo = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtTitulo);
         txtAutor = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtAutor);
+        txtClassificacao = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtClassificacao);
+        txtCutter = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtCutter);
+        txtObservacao = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
         txtResumo = (TextView) findViewById(br.com.gedai.bibliotecagedai.R.id.txtResumo);
         avalicoesLivro = (RatingBar) findViewById(br.com.gedai.bibliotecagedai.R.id.avaliacaoLivro);
 
         imagemLivro.setImageBitmap(BitmapFactory.decodeFile(livro.getPathImagem()));
         txtTitulo.setText(livro.getTitulo());
         txtAutor.setText(livro.getAutor());
+        txtClassificacao.setText(livro.getClassificacao());
+        txtCutter.setText(livro.getCutter());
+        txtObservacao.setText(livro.getObservacao());
         txtResumo.setText(livro.getResumo());
         avalicoesLivro.setRating(new Float(livro.getAvaliacao()));
     }

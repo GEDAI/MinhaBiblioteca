@@ -4,6 +4,7 @@ package br.com.gedai.bibliotecagedai.ui;
  * Created by GTI-366739 on 16/11/2015.
  */
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -16,10 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
+import br.com.gedai.bibliotecagedai.R;
 
 
 
+import br.com.gedai.bibliotecagedai.service.Banco;
 import br.com.gedai.bibliotecagedai.service.BancoService;
+
 import br.com.gedai.bibliotecagedai.model.Livro;
 
 public class NovoItemActivity extends Activity {
@@ -28,6 +33,9 @@ public class NovoItemActivity extends Activity {
     private Button btnAdicionar;
     private Button btnInserirImagem;
     private EditText txtTitulo;
+    private EditText txtClassificacao;
+    private EditText txtCutter;
+    private EditText txtObservacao;
     private EditText txtAutor;
     private EditText txtResumo;
     private RatingBar avalicoesLivro;
@@ -44,6 +52,9 @@ public class NovoItemActivity extends Activity {
         btnAdicionar = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnAdicionar);
         txtTitulo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtTitulo);
         txtAutor = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtAutor);
+        txtClassificacao = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtClassificacao);
+        txtCutter = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtCutter);
+        txtAutor = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
         txtResumo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtResumo);
         avalicoesLivro = (RatingBar) findViewById(br.com.gedai.bibliotecagedai.R.id.avaliacaoLivro);
         btnInserirImagem = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnInserirImagem);
@@ -58,6 +69,9 @@ public class NovoItemActivity extends Activity {
                 Livro livro = new Livro();
                 livro.setTitulo(txtTitulo.getText().toString());
                 livro.setAutor(txtAutor.getText().toString());
+                livro.setClassificacao(txtClassificacao.getText().toString());
+                livro.setCutter(txtCutter.getText().toString());
+                livro.setObservacao(txtObservacao.getText().toString());
                 livro.setResumo(txtResumo.getText().toString());
                 livro.setAvaliacao(avalicoesLivro.getRating());
                 livro.setPathImagem(pathImagem);
@@ -65,7 +79,7 @@ public class NovoItemActivity extends Activity {
 
                 bancoService.salvarLivro(livro, getApplicationContext());
 
-/*				try {
+				try {
 
 					Banco banco = new Banco(getApplicationContext(),
 							"banco", null, 1);
@@ -73,6 +87,9 @@ public class NovoItemActivity extends Activity {
 					ContentValues contentValues = new ContentValues();
 					contentValues.put("titulo", livro.getTitulo());
 					contentValues.put("autor", livro.getAutor());
+                    contentValues.put("classificacao", livro.getClassificacao());
+                    contentValues.put("cutter", livro.getCutter());
+                    contentValues.put("observacao", livro.getObservacao());
 					contentValues.put("resumo", livro.getResumo());
 					contentValues.put("avaliacao", livro.getAvaliacao());
 					contentValues.put("path_imagem", livro.getPathImagem());
@@ -80,18 +97,21 @@ public class NovoItemActivity extends Activity {
 							contentValues);
 
 					Toast toast = Toast.makeText(getApplicationContext(),
-							"Livro cadastrado com sucesso!!", 5);
+							"Livro cadastrado com sucesso!!", 8);
 					toast.show();
 
 				} catch (Exception e) {
 					Toast toast = Toast.makeText(getApplicationContext(),
-							"Erro ao salvar informações no banco!", 5);
+							"Erro ao salvar informações no banco!", 8);
 					toast.show();
-				}*/
+				}
 
                 txtTitulo.setText("");
                 txtAutor.setText("");
                 txtResumo.setText("");
+                txtClassificacao.setText("");
+                txtCutter.setText("");
+                txtObservacao.setText("");
                 avalicoesLivro.setRating(1);
                 pathImagem = "";
                 imagemLivro.setBackgroundResource(br.com.gedai.bibliotecagedai.R.drawable.ic_launcher);
