@@ -42,11 +42,11 @@ public class Livro implements Serializable {
     public String getObservacao() { return observacao; }
     public void setObservacao(String observacao) {this.observacao = observacao;}
 
-    public String getClassificacao() {return observacao; }
-    public void setClassificacao(String Classificacao) {this.classificacao = Classificacao;}
+    public String getClassificacao() {return classificacao; }
+    public void setClassificacao(String classificacao) {this.classificacao = classificacao;}
 
     public String getCutter() {return cutter;}
-    public void setCutter(String Cutter) {this.cutter = Cutter;}
+    public void setCutter(String cutter) {this.cutter = cutter;}
 
 
 }

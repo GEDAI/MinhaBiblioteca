@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import br.com.gedai.bibliotecagedai.model.Livro;
@@ -18,11 +19,17 @@ public class BancoService {
 
         Banco banco = new Banco(context, "banco", null, 1);
 
-        Cursor cursor = banco.getWritableDatabase().query(
+        SQLiteDatabase db = banco.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT ID_LIVRO, TITULO, AUTOR, RESUMO, PATH_IMAGE, " +
+                "AVALIACAO, OBSERVACAO, CLASSIFICACAO, CUTER FROM LIVRO WHERE ID_LIVRO = ?", new String[]{id});
+        cursor.moveToFirst();
+
+        /*Cursor cursor = banco.getWritableDatabase().query(
                 "livro",
-                new String[] { "id_livro", "titulo", "autor", "resumo",
-                        "path_imagem", "avaliacao" }, null, null, null, null,
-                null);
+                new String[]{"id_livro", "titulo", "autor", "resumo",
+                        "path_imagem", "avaliacao", "observacao", "classificacao", "cutter"}, null, null, null, null,
+                null, null); */
 
         List<Livro> livros = new ArrayList<Livro>();
 
@@ -34,6 +41,9 @@ public class BancoService {
             livro.setResumo(cursor.getString(3));
             livro.setPathImagem(cursor.getString(4));
             livro.setAvaliacao(cursor.getDouble(5));
+            livro.setObservacao(cursor.getString(6));
+            livro.setClassificacao(cursor.getString(7));
+            livro.setCutter(cursor.getString(8));
 
             livros.add(livro);
         }
@@ -53,11 +63,15 @@ public class BancoService {
             ContentValues contentValues = new ContentValues();
             contentValues.put("titulo", livro.getTitulo());
             contentValues.put("autor", livro.getAutor());
+            contentValues.put("resumo", livro.getResumo());
+            contentValues.put("path_imagem", livro.getPathImagem());
+            contentValues.put("avaliacao", livro.getAvaliacao());
+            contentValues.put("observacao", livro.getObservacao());
             contentValues.put("classificacao", livro.getClassificacao());
             contentValues.put("cutter", livro.getCutter());
-            contentValues.put("observacao", livro.getObservacao());
-            contentValues.put("avaliacao", livro.getAvaliacao());
-            contentValues.put("path_imagem", livro.getPathImagem());
+
+
+
             banco.getWritableDatabase().insert("livro", null, contentValues);
 
             Toast toast = Toast.makeText(context,

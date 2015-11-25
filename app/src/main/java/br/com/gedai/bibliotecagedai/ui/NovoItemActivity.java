@@ -56,6 +56,7 @@ public class NovoItemActivity extends Activity {
         txtCutter = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtCutter);
         txtAutor = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
         txtResumo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtResumo);
+        txtObservacao = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
         avalicoesLivro = (RatingBar) findViewById(br.com.gedai.bibliotecagedai.R.id.avaliacaoLivro);
         btnInserirImagem = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnInserirImagem);
 
@@ -97,12 +98,12 @@ public class NovoItemActivity extends Activity {
 							contentValues);
 
 					Toast toast = Toast.makeText(getApplicationContext(),
-							"Livro cadastrado com sucesso!!", 8);
+							"Livro cadastrado com sucesso!!", Toast.LENGTH_SHORT);
 					toast.show();
 
 				} catch (Exception e) {
 					Toast toast = Toast.makeText(getApplicationContext(),
-							"Erro ao salvar informações no banco!", 8);
+							"Erro ao salvar informações no banco!", Toast.LENGTH_SHORT);
 					toast.show();
 				}
 
