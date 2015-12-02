@@ -110,11 +110,11 @@ public class NovoItemActivity extends Activity {
                 txtTitulo.setText("");
                 txtAutor.setText("");
                 txtResumo.setText("");
+                avalicoesLivro.setRating(1);
+                pathImagem = "";
                 txtClassificacao.setText("");
                 txtCutter.setText("");
                 txtObservacao.setText("");
-                avalicoesLivro.setRating(1);
-                pathImagem = "";
                 imagemLivro.setBackgroundResource(br.com.gedai.bibliotecagedai.R.drawable.ic_launcher);
                 imagemLivro.setImageBitmap(null);
 

@@ -21,15 +21,15 @@ public class BancoService {
 
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT ID_LIVRO, TITULO, AUTOR, RESUMO, PATH_IMAGE, " +
+        /*Cursor cursor = db.rawQuery("SELECT ID_LIVRO, TITULO, AUTOR, RESUMO, PATH_IMAGE, " +
                 "AVALIACAO, OBSERVACAO, CLASSIFICACAO, CUTER FROM LIVRO WHERE ID_LIVRO = ?", new String[]{id});
-        cursor.moveToFirst();
+        cursor.moveToFirst();*/
 
-        /*Cursor cursor = banco.getWritableDatabase().query(
+        Cursor cursor = banco.getWritableDatabase().query(
                 "livro",
                 new String[]{"id_livro", "titulo", "autor", "resumo",
-                        "path_imagem", "avaliacao", "observacao", "classificacao", "cutter"}, null, null, null, null,
-                null, null); */
+                        "path_imagem", "avaliacao", "classificacao"}, null, null, null, null,
+                null);
 
         List<Livro> livros = new ArrayList<Livro>();
 
@@ -41,9 +41,9 @@ public class BancoService {
             livro.setResumo(cursor.getString(3));
             livro.setPathImagem(cursor.getString(4));
             livro.setAvaliacao(cursor.getDouble(5));
-            livro.setObservacao(cursor.getString(6));
-            livro.setClassificacao(cursor.getString(7));
-            livro.setCutter(cursor.getString(8));
+            livro.setClassificacao(cursor.getString(6));
+            /*livro.setObservacao(cursor.getString(6));
+            livro.setCutter(cursor.getString(8));*/
 
             livros.add(livro);
         }

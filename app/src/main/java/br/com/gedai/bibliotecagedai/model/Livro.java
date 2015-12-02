@@ -9,12 +9,12 @@ public class Livro implements Serializable {
     private static final long serialVersionUID = 1L;
     private String titulo;
     private String autor;
-    private String classificacao;
-    private String cutter;
-    private String observacao;
     private String resumo;
     private double avaliacao;
     private String pathImagem;
+    private String classificacao;
+    private String cutter;
+    private String observacao;
 
     public String getTitulo() {return titulo;}
     public void setTitulo(String titulo) {this.titulo = titulo;}

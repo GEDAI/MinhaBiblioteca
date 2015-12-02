@@ -23,16 +23,16 @@ public class Banco extends SQLiteOpenHelper {
                 + " autor varchar(45) NOT NULL,"
                 + " resumo varchar(125) NOT NULL,"
                 + " path_imagem varchar(125) NOT NULL,"
-                + " avaliacao double NOT NULL, "
-                + " observacao varchar(150),"
-                + " classificacao varchar(20),"
-                + " cutter varchar(20)" + ");");
+                + " avaliacao double NOT NULL" + ");");
     }
 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // TODO Auto-generated method stub
+        db.execSQL(" ALTER TABLE livro ("
+                +  " ADD classificacao varchar(20),"
+                +  " cutter varchar(20),"
+                +  " observacao varchar(200)" + ");");
     }
 
 }
