@@ -15,5 +15,15 @@
     <string name="cutter">Cutter:</string>
     <string name="observacao">Observação:</string>
 
+    <string name="registro_salvo">Registro salvo com sucesso!</string>
+    <string name="erro_salvar">Erro ao salvar!</string>
+    <string name="registro_removido">Registro removido com sucesso!</string>
+
+    <string name="editar">Editar</string>
+    <string name="remover">Remover</string>
+
+    <string name="confirmacao_exclusao_livro">Deseja realmente remover o livro?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
 </resources>

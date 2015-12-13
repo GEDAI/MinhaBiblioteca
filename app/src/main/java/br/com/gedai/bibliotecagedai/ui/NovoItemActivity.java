@@ -4,7 +4,6 @@ package br.com.gedai.bibliotecagedai.ui;
  * Created by GTI-366739 on 16/11/2015.
  */
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -18,29 +17,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
+
+
 import br.com.gedai.bibliotecagedai.R;
-
-
-
-import br.com.gedai.bibliotecagedai.service.Banco;
-import br.com.gedai.bibliotecagedai.service.BancoService;
+import br.com.gedai.bibliotecagedai.dao.BibliotecaDAO;
 
 import br.com.gedai.bibliotecagedai.model.Livro;
 
 public class NovoItemActivity extends Activity {
 
     private ImageView imagemLivro;
-    private Button btnAdicionar;
     private Button btnInserirImagem;
+    private Button btnAdicionar;
     private EditText txtTitulo;
+    private EditText txtAutor;
+    private EditText txtResumo;
     private EditText txtClassificacao;
     private EditText txtCutter;
     private EditText txtObservacao;
-    private EditText txtAutor;
-    private EditText txtResumo;
-    private RatingBar avalicoesLivro;
+    private RatingBar avaliacaoLivro;
     private String pathImagem;
-    private BancoService bancoService;
+    private BibliotecaDAO dao;
+    private Long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,78 +47,15 @@ public class NovoItemActivity extends Activity {
         setContentView(br.com.gedai.bibliotecagedai.R.layout.adicionar_item);
 
         imagemLivro = (ImageView) findViewById(br.com.gedai.bibliotecagedai.R.id.imagem_livro);
-        btnAdicionar = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnAdicionar);
         txtTitulo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtTitulo);
         txtAutor = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtAutor);
+        txtResumo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtResumo);
         txtClassificacao = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtClassificacao);
         txtCutter = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtCutter);
-        txtAutor = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
-        txtResumo = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtResumo);
         txtObservacao = (EditText) findViewById(br.com.gedai.bibliotecagedai.R.id.txtObservacao);
-        avalicoesLivro = (RatingBar) findViewById(br.com.gedai.bibliotecagedai.R.id.avaliacaoLivro);
+        avaliacaoLivro = (RatingBar) findViewById(br.com.gedai.bibliotecagedai.R.id.avaliacaoLivro);
         btnInserirImagem = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnInserirImagem);
-
-        bancoService = new BancoService();
-
-        btnAdicionar.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                Livro livro = new Livro();
-                livro.setTitulo(txtTitulo.getText().toString());
-                livro.setAutor(txtAutor.getText().toString());
-                livro.setClassificacao(txtClassificacao.getText().toString());
-                livro.setCutter(txtCutter.getText().toString());
-                livro.setObservacao(txtObservacao.getText().toString());
-                livro.setResumo(txtResumo.getText().toString());
-                livro.setAvaliacao(avalicoesLivro.getRating());
-                livro.setPathImagem(pathImagem);
-
-
-                bancoService.salvarLivro(livro, getApplicationContext());
-
-				try {
-
-					Banco banco = new Banco(getApplicationContext(),
-							"banco", null, 1);
-
-					ContentValues contentValues = new ContentValues();
-					contentValues.put("titulo", livro.getTitulo());
-					contentValues.put("autor", livro.getAutor());
-                    contentValues.put("classificacao", livro.getClassificacao());
-                    contentValues.put("cutter", livro.getCutter());
-                    contentValues.put("observacao", livro.getObservacao());
-					contentValues.put("resumo", livro.getResumo());
-					contentValues.put("avaliacao", livro.getAvaliacao());
-					contentValues.put("path_imagem", livro.getPathImagem());
-					banco.getWritableDatabase().insert("livro", null,
-							contentValues);
-
-					Toast toast = Toast.makeText(getApplicationContext(),
-							"Livro cadastrado com sucesso!!", Toast.LENGTH_SHORT);
-					toast.show();
-
-				} catch (Exception e) {
-					Toast toast = Toast.makeText(getApplicationContext(),
-							"Erro ao salvar informações no banco!", Toast.LENGTH_SHORT);
-					toast.show();
-				}
-
-                txtTitulo.setText("");
-                txtAutor.setText("");
-                txtResumo.setText("");
-                avalicoesLivro.setRating(1);
-                pathImagem = "";
-                txtClassificacao.setText("");
-                txtCutter.setText("");
-                txtObservacao.setText("");
-                imagemLivro.setBackgroundResource(br.com.gedai.bibliotecagedai.R.drawable.ic_launcher);
-                imagemLivro.setImageBitmap(null);
-
-            }
-
-        });
+        btnAdicionar = (Button) findViewById(br.com.gedai.bibliotecagedai.R.id.btnAdicionar);
 
         btnInserirImagem.setOnClickListener(new OnClickListener() {
 
@@ -136,6 +71,59 @@ public class NovoItemActivity extends Activity {
 
         });
 
+        dao = new BibliotecaDAO(this);
+
+        id = getIntent().getLongExtra("livro_selecionado", -1);
+
+        if (id != -1) {
+            prepararEdicao();
+        }
+    }
+
+    private void prepararEdicao() {
+
+        Livro livro = dao.buscarLivroPorId(id);
+
+        imagemLivro.setImageBitmap(BitmapFactory.decodeFile(livro.getPathImagem()));
+        txtTitulo.setText(livro.getTitulo());
+        txtAutor.setText(livro.getAutor());
+        txtResumo.setText(livro.getResumo());
+        txtClassificacao.setText(livro.getClassificacao());
+        txtCutter.setText(livro.getCutter());
+        txtObservacao.setText(livro.getObservacao());
+        pathImagem = livro.getPathImagem();
+        avaliacaoLivro.setRating((float) livro.getAvaliacao());
+        btnAdicionar.setText(R.string.editar);
+    }
+
+    public void salvarLivro(View view){
+        Livro livro = new Livro();
+
+        livro.setTitulo(txtTitulo.getText().toString());
+        livro.setAutor(txtAutor.getText().toString());
+        livro.setResumo(txtResumo.getText().toString());
+        livro.setClassificacao(txtClassificacao.getText().toString());
+        livro.setCutter(txtCutter.getText().toString());
+        livro.setObservacao(txtObservacao.getText().toString());
+        livro.setPathImagem(pathImagem);
+        livro.setAvaliacao(avaliacaoLivro.getRating());
+
+        long resultado;
+
+        if(id == -1){
+            resultado = dao.inserir(livro);
+        }else{
+            resultado = dao.atualizar(livro, id);
+        }
+
+        if(resultado != -1 ){
+            Toast.makeText(this, getString(br.com.gedai.bibliotecagedai.R.string.registro_salvo), Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, ColecaoActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, getString(br.com.gedai.bibliotecagedai.R.string.erro_salvar), Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -156,6 +144,12 @@ public class NovoItemActivity extends Activity {
             imagemLivro.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             pathImagem = picturePath;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        dao.close();
+        super.onDestroy();
     }
 
 }

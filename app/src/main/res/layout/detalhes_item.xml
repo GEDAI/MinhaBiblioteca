@@ -5,89 +5,97 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="525dp" >
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2" >
 
-        <ImageView
-            android:id="@+id/imagem_livro"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/app_name"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_launcher" />
+        <LinearLayout
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/txtAutor"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtTitulo"
-            android:layout_below="@+id/txtTitulo"
-            android:layout_marginTop="16dp"
-            android:ems="10"/>
+            <ImageView
+                android:id="@+id/imagem_livro"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/app_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
 
-        <TextView
-            android:id="@+id/txtTitulo"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/txtResumo"
-            android:layout_below="@+id/imagem_livro"
-            android:layout_marginTop="20dp"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10" />
 
-        <TextView
-            android:id="@+id/txtClassificacao"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_below="@+id/txtAutor"
-            android:layout_alignBaseline="@+id/txtCutter"
-            android:layout_alignBottom="@+id/txtCutter"
-            android:layout_alignLeft="@+id/txtAutor"
-            android:layout_alignStart="@+id/txtAutor" />
+            <TextView
+                android:id="@+id/txtAutor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"/>
 
-        <TextView
-            android:id="@+id/txtCutter"
-            android:layout_width="175dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_alignBaseline="@+id/txtObservacao"
-            android:layout_alignBottom="@+id/txtObservacao"
-            android:layout_alignLeft="@+id/txtClassificacao"
-            android:layout_alignStart="@+id/txtClassificacao" />
+            <TextView
+                android:id="@+id/txtClassificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10" />
 
-        <TextView
-            android:id="@+id/txtResumo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/imagem_livro"
-            android:layout_alignStart="@+id/imagem_livro" />
+            <TextView
+                android:id="@+id/txtCutter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10" />
 
-        <TextView
-            android:id="@+id/txtObservacao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_alignRight="@+id/txtAutor"
-            android:layout_alignEnd="@+id/txtAutor"
-            android:layout_below="@+id/txtAutor"
-            android:layout_alignLeft="@+id/txtAutor"
-            android:layout_alignStart="@+id/txtAutor" />
+            <TextView
+                android:id="@+id/txtResumo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10" />
 
-        <RatingBar
-            android:id="@+id/avaliacaoLivro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="1.0"
-            android:stepSize="1.0"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/txtCutter"
-            android:layout_alignStart="@+id/txtCutter" />
+            <TextView
+                android:id="@+id/txtObservacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10" />
 
-    </RelativeLayout>
+            <RatingBar
+                android:id="@+id/avaliacaoLivro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:numStars="5"
+                android:rating="1.0"
+                android:stepSize="1.0" />
+
+        </LinearLayout>
+
+        <TableRow>
+
+            <Button
+                android:onClick="editarLivro"
+                android:text="@string/editar"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:onClick="removerLivro"
+                android:text="@string/remover"
+                android:layout_marginTop="20dp"/>
+        </TableRow>
+
+    </TableLayout>
+
 
 </ScrollView>

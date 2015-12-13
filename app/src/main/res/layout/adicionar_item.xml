@@ -59,6 +59,7 @@
             android:layout_above="@+id/txtClassificacao"
             android:layout_alignLeft="@+id/lblClassificacao"
             android:layout_alignStart="@+id/lblClassificacao" />
+
         <TextView
             android:id="@+id/lblClassificacao"
             android:layout_width="wrap_content"
@@ -97,8 +98,7 @@
             android:layout_below="@+id/txtClassificacao"
             android:layout_alignLeft="@+id/txtClassificacao"
             android:layout_alignStart="@+id/txtClassificacao">
-            </EditText>
-
+        </EditText>
 
         <TextView
             android:id="@+id/textView1"
@@ -150,6 +150,7 @@
 
         <Button
             android:id="@+id/btnAdicionar"
+            android:onClick="salvarLivro"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="@string/adicionar"

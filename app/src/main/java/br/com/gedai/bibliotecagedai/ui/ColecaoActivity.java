@@ -12,20 +12,21 @@ import android.view.View;
 import android.widget.ListView;
 
 
-import br.com.gedai.bibliotecagedai.service.BancoService;
+import br.com.gedai.bibliotecagedai.dao.BibliotecaDAO;
 import br.com.gedai.bibliotecagedai.model.Livro;
 import br.com.gedai.bibliotecagedai.adapter.LivroAdapter;
 
 public class ColecaoActivity extends ListActivity {
 
     private List<Livro> livros;
+    private BibliotecaDAO dao;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.dao = new BibliotecaDAO(this);
 
-        BancoService bancoService = new BancoService();
-        livros = bancoService.getAllLivros(getApplicationContext());
+        this.livros = dao.listarLivros();
         setListAdapter(new LivroAdapter(this, livros));
     }
 
