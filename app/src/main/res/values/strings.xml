@@ -23,6 +23,7 @@
     <string name="registro_removido">Registro removido com sucesso!</string>
 
     <string name="editar">Editar</string>
+    <string name="salvar">Salvar</string>
     <string name="remover">Remover</string>
 
     <string name="confirmacao_exclusao_livro">Deseja realmente remover o livro?</string>

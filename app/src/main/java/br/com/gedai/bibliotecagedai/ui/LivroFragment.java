@@ -93,7 +93,7 @@ public class LivroFragment extends Fragment {
         txtObservacao.setText(livro.getObservacao());
         pathImagem = livro.getPathImagem();
         avaliacaoLivro.setRating((float) livro.getAvaliacao());
-        btnAdicionar.setText(R.string.editar);
+        btnAdicionar.setText(R.string.salvar);
 
         this.livro_id = livro_id;
     }
