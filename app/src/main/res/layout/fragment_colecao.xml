@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/colecao_layout"
+    tools:context="br.edu.seifai.test.ui.ColecaoFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imagemLivro"
+            android:layout_width="60dp"
+            android:layout_height="42dp"
+            android:contentDescription="@string/inserir_imagem"
+            android:src="@mipmap/ic_launcher"
+            android:background="#ffffff"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txtTituloLivro"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imagemLivro"
+            android:layout_toRightOf="@+id/imagemLivro"
+            android:paddingLeft="5dp"
+            android:text="@string/titulo"
+            android:textColor="#333333"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

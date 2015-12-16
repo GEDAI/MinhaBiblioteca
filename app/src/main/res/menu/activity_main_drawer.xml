@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_colecao"
+            android:icon="@drawable/ic_action_collection"
+            android:title="@string/minha_colecao" />
+        <item
+            android:id="@+id/nav_sobre"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/sobre" />
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="@string/sair" />
+    </group>
+
+</menu>

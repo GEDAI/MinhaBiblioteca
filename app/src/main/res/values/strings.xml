@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">BibliotecaGEDAI</string>
+    <string name="app_name">Biblioteca GEDAI</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
 
     <string name="minha_colecao">Minha coleção</string>
     <string name="adicionar">Adicionar</string>
@@ -13,7 +16,7 @@
     <string name="inserir_imagem">+</string>
     <string name="classificacao">Classificação:</string>
     <string name="cutter">Cutter:</string>
-    <string name="observacao">Observação:</string>
+    <string name="observacao">Observações:</string>
 
     <string name="registro_salvo">Registro salvo com sucesso!</string>
     <string name="erro_salvar">Erro ao salvar!</string>
@@ -26,4 +29,8 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sobre">Sobre</string>
+    <string name="sair">Sair</string>
 </resources>

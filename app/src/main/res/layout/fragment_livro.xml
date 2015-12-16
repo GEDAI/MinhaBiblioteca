@@ -1,0 +1,128 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.edu.seifai.test.ui.DetalheItemFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1,2" >
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/imagem_livro"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/btnInserirImagem"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="@string/inserir_imagem"
+                    android:layout_gravity="left" />
+            </TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo" />
+
+            <EditText
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text">
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/autor" />
+
+            <EditText
+                android:id="@+id/txtAutor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resumo" />
+
+            <EditText
+                android:id="@+id/txtResumo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/lblClassificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/classificacao" />
+
+            <EditText
+                android:id="@+id/txtClassificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text">
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cutter" />
+
+            <EditText
+                android:id="@+id/txtCutter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text">
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/observacao" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtObservacao" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/avaliacao" />
+
+            <LinearLayout>
+                <RatingBar
+                    android:id="@+id/avaliacaoLivro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="1.0"
+                    android:stepSize="1.0" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAdicionar"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/adicionar" />
+
+        </TableLayout>
+
+    </ScrollView>
+</FrameLayout>
