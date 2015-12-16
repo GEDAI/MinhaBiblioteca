@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         DetalheItemFragment.OnDetalheItemListener, LivroFragment.OnLivroListener {
 
     private FloatingActionButton fab;
+    private boolean isFabVisivel = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +44,27 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
-        this.fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (isFabVisivel) {
 
-        this.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final LivroFragment novoFragment = new LivroFragment();
+            this.fab = (FloatingActionButton) findViewById(R.id.fab);
 
-                final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            this.fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final LivroFragment novoFragment = new LivroFragment();
 
-                transaction.replace(R.id.fragment_container, novoFragment);
+                    final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-                transaction.addToBackStack(null);
+                    transaction.replace(R.id.fragment_container, novoFragment);
 
-                transaction.commit();
+                    transaction.addToBackStack(null);
 
-                fab.hide();
-            }
-        });
+                    transaction.commit();
+
+                    MainActivity.this.desabilitaFab();
+                }
+            });
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        this.habilitaFab();
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -95,7 +100,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_colecao) {
             fragment = new ColecaoFragment();
             fragmentClass = fragment.getClass();
-            this.fab.show();
 
         } else if (id == R.id.nav_sobre) {
             fragment = new SobreFragment();
@@ -104,6 +108,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_sair) {
             System.exit(0);
         }
+
+        this.habilitaFab();
 
         try {
             fragment = (Fragment) fragmentClass.newInstance();
@@ -141,7 +147,7 @@ public class MainActivity extends AppCompatActivity
 
         transaction.commit();
 
-        this.fab.hide();
+        this.desabilitaFab();
     }
 
     @Override
@@ -163,7 +169,7 @@ public class MainActivity extends AppCompatActivity
 
         transaction.commit();
 
-        this.fab.hide();
+        this.desabilitaFab();
     }
 
     @Override
@@ -179,7 +185,7 @@ public class MainActivity extends AppCompatActivity
 
         transaction.commit();
 
-        this.fab.show();
+        this.habilitaFab();
     }
 
     @Override
@@ -195,6 +201,23 @@ public class MainActivity extends AppCompatActivity
 
         transaction.commit();
 
-        fab.show();
+        if (!isFabVisivel) {
+            this.fab.show();
+            isFabVisivel = true;
+        }
+    }
+
+    private void desabilitaFab() {
+        if (isFabVisivel) {
+            this.fab.hide();
+            isFabVisivel = false;
+        }
+    }
+
+    private void habilitaFab() {
+        if (!isFabVisivel) {
+            this.fab.show();
+            isFabVisivel = true;
+        }
     }
 }

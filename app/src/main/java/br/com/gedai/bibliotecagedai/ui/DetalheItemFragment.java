@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import br.com.gedai.bibliotecagedai.ImagemHelper;
 import br.com.gedai.bibliotecagedai.R;
 import br.com.gedai.bibliotecagedai.dao.BibliotecaDAO;
 import br.com.gedai.bibliotecagedai.model.Livro;
@@ -139,9 +141,13 @@ public class DetalheItemFragment extends Fragment implements DialogInterface.OnC
 
     public void atualizaLivroView(int position, long livro_id) {
 
-        Livro livro = this.dao.buscarLivroPorId(livro_id);
+        final Livro livro = this.dao.buscarLivroPorId(livro_id);
 
-        imagemLivro.setImageBitmap(BitmapFactory.decodeFile(livro.getPathImagem()));
+        final ImagemHelper imagemHelper = new ImagemHelper();
+
+        imagemLivro.setImageBitmap(
+                imagemHelper.decodeSampledBitmapFromResource(livro.getPathImagem(), 100, 100));
+
         txtTitulo.setText(livro.getTitulo());
         txtAutor.setText(livro.getAutor());
         txtResumo.setText(livro.getResumo());

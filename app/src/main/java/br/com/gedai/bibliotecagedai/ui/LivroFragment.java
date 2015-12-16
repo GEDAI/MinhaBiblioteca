@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import br.com.gedai.bibliotecagedai.ImagemHelper;
 import br.com.gedai.bibliotecagedai.dao.BibliotecaDAO;
 import br.com.gedai.bibliotecagedai.R;
 import br.com.gedai.bibliotecagedai.model.Livro;
@@ -43,6 +44,8 @@ public class LivroFragment extends Fragment {
 
     OnLivroListener mCallback;
 
+    private ImagemHelper imagemHelper;
+
     public interface OnLivroListener {
 
         public void onLivroSalvarSelected();
@@ -52,7 +55,9 @@ public class LivroFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dao = new BibliotecaDAO(this.getContext());
+        this.imagemHelper = new ImagemHelper();
+
+        this.dao = new BibliotecaDAO(this.getContext());
     }
 
     @Override
@@ -77,7 +82,9 @@ public class LivroFragment extends Fragment {
 
         Livro livro = dao.buscarLivroPorId(livro_id);
 
-        imagemLivro.setImageBitmap(BitmapFactory.decodeFile(livro.getPathImagem()));
+        imagemLivro.setImageBitmap(
+                imagemHelper.decodeSampledBitmapFromResource(livro.getPathImagem(), 100, 100));
+
         txtTitulo.setText(livro.getTitulo());
         txtAutor.setText(livro.getAutor());
         txtResumo.setText(livro.getResumo());
@@ -120,7 +127,10 @@ public class LivroFragment extends Fragment {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
-            imagemLivro.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+            imagemLivro.setImageBitmap(
+                    imagemHelper.decodeSampledBitmapFromResource(picturePath, 100, 100));
+
             pathImagem = picturePath;
         }
     }
