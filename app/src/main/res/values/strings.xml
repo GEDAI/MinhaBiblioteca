@@ -9,6 +9,7 @@
     <string name="minha_colecao">Minha coleção</string>
     <string name="adicionar">Adicionar</string>
 
+
     <string name="titulo">Título:</string>
     <string name="autor">Autor:</string>
     <string name="resumo">Resumo:</string>
@@ -33,5 +34,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sobre">Sobre</string>
+    <string name="sobre2">Grupo de Estudos de Desenvolvimento Android Interativo</string>
+    <string name="gedai">GEDAI</string>
     <string name="sair">Sair</string>
+    <string name="integrantes">INTEGRANTES</string>
+    <string name="ricardo">Coordenador: Ricardo Werlang (ricardo.gti@seifai.edu.br)</string>
+    <string name="pesquisadores">PESQUISADORES</string>
+    <string name="marcelo">Bolsista: Marcelo Sommer (marcelo_ipsc@hotmail.com)</string>
+    <string name="andreia">Voluntária: Adréia Marisa Gemmer (andreia.marisa@live.com)</string>
+    <string name="cleiton">Voluntário: Cleiton Lenkner (cleiton.lenkner@hotmail.com)</string>
+    <string name="dionathan">Voluntário: Dionathan Toillier (dionathantoillier20@gmail.com)</string>
 </resources>
