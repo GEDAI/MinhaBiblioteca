@@ -128,10 +128,15 @@ public class LivroFragment extends Fragment {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            imagemLivro.setImageBitmap(
-                    imagemHelper.decodeSampledBitmapFromResource(picturePath, 100, 100));
+            if(picturePath != null) {
 
-            pathImagem = picturePath;
+                imagemLivro.setImageBitmap(
+                        imagemHelper.decodeSampledBitmapFromResource(picturePath, 100, 100));
+
+                pathImagem = picturePath;
+            } else {
+                Toast.makeText(LivroFragment.this.getContext(), getString(R.string.erro_salvar), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
